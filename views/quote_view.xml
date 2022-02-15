@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="quote_view_tree" model="ir.ui.view">
+            <field name="name">Quote</field>
+            <field name="model">quote</field>
+            <field name="arch" type="xml">
+                <tree string="Quote">
+                    <field name="contact_id"/>
+                    <field name="user_id"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="quote_view_form" model="ir.ui.view">
+            <field name="name">Quote</field>
+            <field name="model">quote</field>
+            <field name="arch" type="xml">
+                <form string="Quote">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="contact_id"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name="product_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Information" name="information">
+                                    <field name="information"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="quote_view_activity" model="ir.ui.view">
+            <field name="name">Quote Activity</field>
+            <field name="model">quote</field>
+            <field name="arch" type="xml">
+                <activity string="Quote">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="user_id" display="full"/>
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+        <record id="quote_search" model="ir.ui.view">
+            <field name="name">quote search</field>
+            <field name="model">quote</field>
+            <field name="arch" type="xml">
+                <search string="Quote">
+                    <field name="contact_id"/>
+                </search>
+            </field>
+        </record>
+        <record id="action_quote" model="ir.actions.act_window">
+            <field name="name">Quotes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quote</field>
+            <field name="view_mode">tree,form,activity</field>
+            <field name="search_view_id" ref="quote_search"/>
+        </record>
+        
+        <record id="action_quote_tree_view" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="quote_view_tree"/>
+            <field name="act_window_id" ref="action_quote"/>
+        </record>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem id="menu_quote_root"
+                  name="Quotes"
+                  sequence="10"
+                  web_icon="quote,static/description/quote.png"
+                  groups="quote.group_quote_manager,quote.group_quote_user"/>
+        
+        <menuitem id="quote_contact" 
+                    name="Contacts" 
+                    parent="quote.menu_quote_root" 
+                    action="contacts.action_contacts"
+                    sequence="10"
+                    groups="quote.group_quote_manager,quote.group_quote_user"/>
+        
+        <menuitem id="quote_product" 
+                    name="Products" 
+                    parent="quote.menu_quote_root" 
+                    action="sale.product_template_action"
+                    sequence="20"
+                    groups="quote.group_quote_manager,quote.group_quote_user"/>
+
+        <menuitem id="quote_user" 
+                    name="Users" 
+                    parent="quote.menu_quote_root" 
+                    action="base.action_res_users"
+                    sequence="40"
+                    groups="quote.group_quote_manager,quote.group_quote_user"/>
+        
+        <menuitem id="quote" 
+                    name="Quote" 
+                    parent="quote.menu_quote_root" 
+                    action="quote.action_quote"
+                    sequence="60"
+                    groups="quote.group_quote_manager,quote.group_quote_user"/>
+        
+</odoo>
