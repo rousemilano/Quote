@@ -6,23 +6,24 @@
     'version': '1',
     'depends': [
         'base',
-        'sale',
-        'contacts'
+        'account',
+        'contacts',
+        'web'
     ],
-    'author': 'Routh Milano',
+    'author': 'Rouse Milano',
     'description': """
-        Version: odoo14 Enterprise
+        Version: odoo15 Enterprise
         Is a module for create quote
     """,
     'category': 'Sales/Quote',
-    'website': 'http://www.odoo.com/',
     'data': [
         'security/quote_group.xml',
         'security/ir.model.access.csv',
         
         'views/quote_view.xml',
-        'views/menu_quote.xml'
-        
+        'views/menu_quote.xml',
+        'report/quote_template.xml',
+        'report/quote_report.xml'  
     ],
     'installable': True,
     'auto_install': True,

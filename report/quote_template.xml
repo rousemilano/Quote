@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_quote_table">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div style="text-align:center;">
+                        <img t-att-src="image_data_uri(doc.image)" style='max-height:200px;' alt="Logo" />
+                        <br/><br/><br/><br/>
+                    </div>
+                    <table class="table table-sm o_main_table" name="quote_line_table">
+                        <thead>
+                            <tr>
+                                <th name="qt_contact" class="text-left"><span>Contact</span></th>
+                                <th name="qt_salesperson" class="text-right"><span>Salesperson</span></th>
+                                <th name="qt_product" t-attf-class="text-right"><span>Product</span></th>
+                                <th name="qt_price" t-attf-class="text-right"><span>Price</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="quote_tbody">
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                <td><span t-field="doc.contact_id"/></td>
+                                <td class="text-right"> <span t-field="doc.user_id"/></td>
+                                <td t-attf-class="text-right"><span class="text-nowrap" t-field="doc.product_id"/></td>
+                                <td class="text-right"> <span t-field="doc.product_id.lst_price"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/><br/><br/><br/><br/>
+                    <div>
+                        <span t-field="doc.information"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+        
+        <template id="report_quote">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="quote.report_quote_table"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
